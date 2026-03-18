@@ -1,0 +1,1 @@
+// TODO: Implement EventBadge component
