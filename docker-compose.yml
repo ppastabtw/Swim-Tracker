@@ -60,6 +60,13 @@ services:
       redis:
         condition: service_started
 
+  flaresolverr:
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    environment:
+      - LOG_LEVEL=info
+    ports:
+      - "8191:8191"
+
   frontend:
     build: ./frontend
     command: npm run dev

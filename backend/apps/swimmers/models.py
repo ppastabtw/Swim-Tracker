@@ -113,7 +113,7 @@ class Meet(models.Model):
     location_city = models.CharField(max_length=100)
     location_state = models.CharField(max_length=10, blank=True)
     location_country = models.CharField(max_length=3, default='USA')
-    source = models.CharField(max_length=20)
+    source = models.CharField(max_length=20, blank=True)
     external_id = models.CharField(max_length=255, blank=True)
 
     def __str__(self):
@@ -121,7 +121,13 @@ class Meet(models.Model):
 
     class Meta:
         ordering = ['-start_date']
-        unique_together = [('source', 'external_id')]
+        constraints = [
+            models.UniqueConstraint(
+                fields=['source', 'external_id'],
+                condition=models.Q(external_id__gt=''),
+                name='unique_meet_source_external_id',
+            ),
+        ]
 
 
 class Event(models.Model):

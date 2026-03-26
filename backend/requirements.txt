@@ -12,9 +12,12 @@ python-decouple
 gunicorn
 
 # Scraping
+pandas
 SwimScraper
 swimrankingsscraper
 scrapy
 selenium
 webdriver-manager
 openpyxl
+playwright
+playwright-stealth
